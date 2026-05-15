@@ -1,0 +1,19 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+*.bak
+.idea/
+.vscode/
+
+# Working artifacts
+tmp/
+
+# Domain-specific voice profiles — only built-in profiles are tracked.
+# Project-specific profiles stay local.
+profiles/*
+!profiles/.gitkeep
