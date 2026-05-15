@@ -1,6 +1,6 @@
 # Vision Factory
 
-**Version:** 1.0.0 · **License:** MIT
+**Version:** 1.0.0 · **License:** MIT · **Repo:** [github.com/mreza0100/vision-factory](https://github.com/mreza0100/vision-factory)
 
 A Claude Code skill that forges, validates, and stress-tests startup visions through three sequential modes: a Socratic interview that grills the founder until the real vision emerges, a cross-check that produces a targeted research prompt, and a ten-dimension rubric that scores the vision honestly.
 
