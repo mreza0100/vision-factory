@@ -30,7 +30,7 @@ Create `.codex/skills/vision-factory/SKILL.md`:
 ```markdown
 ---
 name: vision-factory
-description: "Vision creation, validation, and stress-testing for founders. Three modes: CREATE (Socratic interview → narrative), RESEARCH (cross-check → RRP), STRESS-TEST (hybrid rubric). General-purpose protocol — consumer commands add domain-specific context."
+description: "Vision creation, validation, and stress-testing for founders. Three modes: CREATE (Socratic interview → narrative), RESEARCH (cross-check → execute research → validation report), STRESS-TEST (hybrid rubric). General-purpose protocol — consumer commands add domain-specific context."
 ---
 
 # Vision Factory — Codex Wrapper
@@ -43,7 +43,7 @@ Read and follow the full protocol at `.claude/skills/vision-factory/SKILL.md`. T
 
 ## Codex-Specific Rules
 
-- **RRP output:** Mode B produces a research prompt (RRP), not inline research.
+- **Research execution:** Mode B executes research internally via the `RR` skill and returns a validation report. The user never sees intermediate research prompts.
 - **Artifact location:** Save artifacts where the consuming command specifies. Default to `tmp/`.
 - **Voice profiles:** Check `.claude/skills/ghostwriter/profiles/` for applicable voice profiles.
 - **Domain context:** The consuming command provides domain-specific reference docs. Read them before each mode.
@@ -58,7 +58,7 @@ Read and follow the full protocol at `.claude/skills/vision-factory/SKILL.md`. T
 Add this row to your project's Skills table:
 
 ```markdown
-| `vision-factory` | "vision", "create a vision", "stress-test my vision" — Socratic interview → narrative → cross-check RRP → hybrid rubric scoring |
+| `vision-factory` | "vision", "create a vision", "stress-test my vision" — Socratic interview → narrative → cross-check research → hybrid rubric scoring |
 ```
 
 **Customize:** Adjust the trigger description if you added domain-specific triggers or changed the rubric description (e.g., "enterprise SaaS rubric" instead of "hybrid rubric scoring").

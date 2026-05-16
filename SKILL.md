@@ -1,6 +1,6 @@
 ---
 name: vision-factory
-description: "Vision creation, validation, and stress-testing for founders. Three modes: CREATE (Socratic interview → narrative), RESEARCH (cross-check → RRP), STRESS-TEST (hybrid rubric). General-purpose — consumer commands add domain-specific context."
+description: "Vision creation, validation, and stress-testing for founders. Three modes: CREATE (Socratic interview → narrative), RESEARCH (cross-check → execute RR → validation report), STRESS-TEST (hybrid rubric). General-purpose — consumer commands add domain-specific context."
 ---
 
 # Vision Factory
@@ -35,7 +35,7 @@ Do NOT load for:
 ```
 CREATE → vision-draft.md (narrative + structured)
    ↓
-RESEARCH → vision-rrp.md (scoped research prompt)
+RESEARCH → vision-research.md (validation report from executed research)
    ↓
 STRESS-TEST → vision-scorecard.md (rubric + hardened vision)
    ↓
@@ -119,7 +119,7 @@ Combines all four above into a single page:
 
 ### Purpose
 
-You have a vision draft. Before stress-testing it, identify what needs external validation and produce a well-targeted RRP (Research Report Prompt) that the user can run via their research skill.
+You have a vision draft. Before stress-testing it, identify what needs external validation, run the research yourself, and come back with a validation report. The user never sees an intermediate prompt — you handle the full cycle.
 
 ### Process
 
@@ -135,43 +135,37 @@ You have a vision draft. Before stress-testing it, identify what needs external 
    - **SUPPORTED** — evidence exists in available knowledge
    - **UNSUPPORTED** — no evidence found, needs research
    - **CONTRADICTED** — available knowledge suggests the claim may be wrong
-4. **Construct the RRP** — a self-contained research prompt targeting the UNSUPPORTED and CONTRADICTED claims. The RRP must:
-   - State the vision context (1-2 sentences)
-   - List 3-5 specific research questions (not vague "research the market")
-   - For each question: what a validating answer looks like, what an invalidating answer looks like
-   - Specify search scope (web, academic, industry reports, competitor analysis)
+4. **Build research questions internally** — for UNSUPPORTED and CONTRADICTED claims, formulate 3-5 specific research questions with validation/invalidation criteria
+5. **Execute the research** — invoke the `RR` skill (or the project's research pipeline) with the research questions. This is an internal step — the user does not need to run anything manually
+6. **Synthesize results** — compile research findings into a validation report, updating each claim's status based on what the research found
 
 ### Output
 
 ```markdown
-# Vision Research Prompt
-
-## Context
-
-{1-2 sentences: what the vision is, what domain}
+# Vision Research Report
 
 ## Claims Assessment
 
-| Claim | Status                                 | Source                          |
-| ----- | -------------------------------------- | ------------------------------- |
-| ...   | SUPPORTED / UNSUPPORTED / CONTRADICTED | {reference or "needs research"} |
+| Claim | Before research | After research | Evidence |
+|-------|----------------|----------------|----------|
+| ... | UNSUPPORTED | VALIDATED / WEAKENED / INVALIDATED | {summary of findings} |
+| ... | CONTRADICTED | CONFIRMED RISK / RESOLVED | {summary of findings} |
+| ... | SUPPORTED | SUPPORTED | {original source} |
 
-## Research Questions
+## Key Findings
 
-### Q1: {specific question}
+### {Finding 1 — most impactful}
+{What the research found, how it affects the vision}
 
-- **Validates if:** {what evidence would support the vision}
-- **Invalidates if:** {what evidence would undermine the vision}
-- **Search scope:** {web / academic / industry / competitor}
+### {Finding 2}
+...
 
-### Q2: ...
+## Impact on Vision
 
-## How to run
-
-Execute via your project's research skill (RR or equivalent) with this prompt as input.
+{1-2 paragraphs: what the research means for the vision — which claims held up, which need rethinking, which are now stronger}
 ```
 
-Save as `vision-rrp.md`.
+Save as `vision-research.md`.
 
 ---
 
@@ -186,7 +180,7 @@ Score the vision across ten dimensions. Each dimension gets a verdict. The final
 ### Input
 
 - Vision draft (from Mode A or user-provided)
-- Research results (from Mode B / research execution — optional but strengthens the test)
+- Research results (from Mode B — optional but strengthens the test significantly)
 - Domain-specific context (from consumer command — competitive intelligence, regulatory docs, etc.)
 
 ### The Ten Dimensions
@@ -304,7 +298,7 @@ Save as `vision-scorecard.md` (includes both the rubric and the hardened vision)
 | Mode           | Input                                                 | Output                          | File                  |
 | -------------- | ----------------------------------------------------- | ------------------------------- | --------------------- |
 | A: CREATE      | Founder context                                       | Vision narrative + one-pager    | `vision-draft.md`     |
-| B: RESEARCH    | Vision draft + domain knowledge                       | Claims assessment + scoped RRP  | `vision-rrp.md`       |
+| B: RESEARCH    | Vision draft + domain knowledge                       | Validation report with research findings | `vision-research.md` |
 | C: STRESS-TEST | Vision draft + research (optional) + domain knowledge | Scored rubric + hardened vision | `vision-scorecard.md` |
 
 ---
@@ -326,7 +320,7 @@ The skill protocol stays clean. The consumer adds the color.
 ## Rules
 
 - **Never accept vague answers in Mode A** — push back until the answer is specific
-- **Never skip the cross-check in Mode B** — the RRP must be grounded in what's already known, not generated from thin air
+- **Never skip the cross-check in Mode B** — research questions must be grounded in what's already known, not generated from thin air. Execute the research yourself — never hand the user an intermediate prompt to run
 - **Never inflate scores in Mode C** — a CONDITIONAL is not a PASS. A founder who gets told everything is great builds on sand
 - **Never lose the founder's voice** — the narrative should sound like the founder, not like a consultant
 - **Keep artifacts lean** — one-pager means one page. Scorecard means scores, not essays

@@ -2,7 +2,7 @@
 
 **Version:** 1.0.0 · **License:** MIT · **Repo:** [github.com/mreza0100/vision-factory](https://github.com/mreza0100/vision-factory)
 
-A Claude Code skill that forges, validates, and stress-tests startup visions through three sequential modes: a Socratic interview that grills the founder until the real vision emerges, a cross-check that produces a targeted research prompt, and a ten-dimension rubric that scores the vision honestly.
+A Claude Code skill that forges, validates, and stress-tests startup visions through three sequential modes: a Socratic interview that grills the founder until the real vision emerges, a cross-check that executes research and returns a validation report, and a ten-dimension rubric that scores the vision honestly.
 
 ## Why this exists
 
@@ -17,7 +17,7 @@ The skill is a structured protocol for that conversation.
 | Mode                | Input                                                 | Output                                           |
 | ------------------- | ----------------------------------------------------- | ------------------------------------------------ |
 | **A — CREATE**      | Founder context                                       | Vision narrative + one-pager                     |
-| **B — RESEARCH**    | Vision draft + domain knowledge                       | Claims assessment + scoped research prompt (RRP) |
+| **B — RESEARCH**    | Vision draft + domain knowledge                       | Validation report with research findings         |
 | **C — STRESS-TEST** | Vision draft + research (optional) + domain knowledge | Scored rubric (10 dimensions) + hardened vision  |
 
 Modes chain: A → B → C → optional loop back to A with findings. Each mode can also be invoked independently.
@@ -30,7 +30,7 @@ From the interview answers, the skill constructs: a vision statement (1 sentence
 
 ### Mode B: RESEARCH — The Cross-Check
 
-Extracts testable claims from the vision draft, cross-checks them against available domain knowledge, and produces a well-targeted Research Report Prompt (RRP) for the claims that are unsupported or contradicted. The RRP is designed to be run via your project's research skill.
+Extracts testable claims from the vision draft, cross-checks them against available domain knowledge, then executes research internally for claims that are unsupported or contradicted. Returns a validation report — the user never sees intermediate research prompts.
 
 ### Mode C: STRESS-TEST — The Rubric
 
