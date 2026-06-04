@@ -1,5 +1,7 @@
 ---
 name: vision-factory
+version: "2.1.0"
+repo: "https://github.com/mreza0100/vision-factory"
 description: "Forge, validate, and stress-test a startup vision using Paul Graham's filters. Three modes: CREATE (PG-style Socratic grilling → vision narrative), RESEARCH (extract testable claims → execute research → validation report), STRESS-TEST (10-filter PG rubric → hardened vision). Load whenever the user says 'vision', 'vision-factory', wants to write/build/create a vision, validate a vision, stress-test or pressure-test a vision, or asks for a one-pager / north star / founding narrative for a startup."
 ---
 
@@ -61,6 +63,17 @@ Ask **one question at a time**. Wait for the answer. Push back if it's vague (se
 
 Skip any question the founder has already answered clearly in their founding context. Don't ask robotically — read what they gave you first.
 
+**Route by stage — you rarely need all eight.** The eight questions cover the whole arc from "is this a real idea" to "can you build it." A founder who already has paying users doesn't need to relitigate whether the problem is real; a founder with nothing but a hunch shouldn't be grilled on their schlep yet. Read where they are and ask the questions that actually bite:
+
+| Founder stage | Lead with | Why |
+|---------------|-----------|-----|
+| Pure hunch / pre-product | Q1, Q2, Q3 | Establish the idea is organic and real before anything else. |
+| Has a prototype, no users | Q1, Q4, Q5 | Pressure the wedge and the founder's edge. |
+| Has users, no revenue | Q2, Q4, Q7 | Demand reality and the manual work to grow it. |
+| Has paying customers | Q5, Q6, Q8 | The idea is proven — test the thesis and the future. |
+
+This is a starting point, not a cage. If an early answer exposes a soft spot, follow it wherever it leads — even into a question the stage table skipped. The goal is the most uncomfortable true thing, not coverage.
+
 **The eight questions (PG-grounded):**
 
 **Q1 — The lived problem.** "Walk me through the moment you first ran into this problem yourself. Not the market opportunity, the actual moment. Where were you? What were you trying to do? What was broken?"
@@ -108,9 +121,57 @@ Listening for: a real contrarian-but-honest claim AND a mechanism. PG's signatur
 
 When in doubt, ask: *"What's the version you'd tell a friend over beers?"* That kills most rehearsed pitch-deck language in one move.
 
+### Anti-sycophancy (the grilling only works if you stay in it)
+
+The default failure mode of an LLM running this interview is to soften. The founder gives a vague answer, you feel the pull to validate it and move on, and the whole exercise becomes theater. The value is in the discomfort — comfort means you haven't pushed hard enough. So hold the line.
+
+**Phrases that mean you've gone soft — don't use them during the interview:**
+
+- "That's an interesting approach" → instead, take a position: is the idea organic or is it a solution hunting for a problem?
+- "There are lots of ways to think about this" → pick one, and name what evidence would change your mind.
+- "You might want to consider..." → say "this is weak because..." or "this is the strongest thing you've said because..."
+- "That could work" → say whether it *will* work given what you've heard, and name the specific evidence that's missing.
+- "I can see why you'd think that" → if the answer is vague or wrong, say so and say why.
+
+**Always:** take a position on every answer, and challenge the *strongest* version of the founder's claim, not a strawman. Calibrated acknowledgment beats praise — when an answer is genuinely specific and evidence-backed, name what was good in one line, then immediately raise the bar with a harder follow-up. The best reward for a good answer is a sharper question.
+
+### How to push (soft vs. forcing)
+
+These show the difference between an interview that produces a polished pitch and one that produces the truth. The forcing version stacks the pressure — it doesn't collapse into a single ask.
+
+**Vague market → force a person.**
+- Founder: "It's an AI tool for developers."
+- SOFT: "Cool, what kind of tool?"
+- FORCING: "There are ten thousand AI dev tools this year. Name the one developer — actual person, actual team — who currently loses two hours a week to the exact thing yours kills. If you can't name them, you don't yet know who you're building for."
+
+**Social proof → demand test.**
+- Founder: "Everyone I talk to loves it."
+- SOFT: "Encouraging! Who have you talked to?"
+- FORCING: "Loving an idea is free. Has anyone paid? Asked when it ships? Gotten angry when your prototype broke? Love isn't demand — behavior is."
+
+**Platform vision → wedge challenge.**
+- Founder: "We need the full platform before it's useful."
+- SOFT: "What would a stripped-down version look like?"
+- FORCING: "That's a red flag. If no smaller version delivers value, usually the value prop isn't clear yet — not that the product needs to be bigger. What would someone pay for *this week*?"
+
+**Growth stat → thesis test.**
+- Founder: "The market's growing 20% a year."
+- SOFT: "Strong tailwind. How do you capture it?"
+- FORCING: "Every competitor cites that same stat. Growth rate isn't a thesis. What do *you* believe about how this market changes that makes *your* product more essential, not just along for the ride?"
+
+The pressure lives in the stacking. When you force specificity, match the consequence to the domain: a B2B tool names whose career is on the line; a consumer tool names the daily moment; a hobby tool names the weekend project that finally gets unblocked. Never let the founder rest at "users."
+
+### Escape hatch (respect impatience, but earn the skip)
+
+If the founder gets impatient — "just write the vision," "skip the questions" — don't robotically continue, but don't fold either:
+
+1. First push: "The hard questions *are* the value — skipping them is like skipping the exam and writing yourself a prescription. Let me ask the two that matter most for where you are, then I'll build it." Consult the stage table, ask the 2 most critical remaining questions, then move to Phase 2.
+2. If they push back a second time, respect it — go straight to Phase 2. Don't ask a third time.
+3. Allow a *full* skip only if they've already given a fully-formed vision with real evidence (named users, revenue, specific behavior). Even then, flag in the output which questions went unasked, so the gaps are visible rather than hidden.
+
 ### Phase 2: Construct the narrative
 
-From the interview answers, write five artifacts. Use the voice in `references/pg-voice.md` — short direct sentences, specific named people, one load-bearing metaphor, no jargon, "empirically" when you mean it.
+From the interview answers, write six artifacts. Use the voice in `references/pg-voice.md` — short direct sentences, specific named people, one load-bearing metaphor, no jargon, "empirically" when you mean it.
 
 **1. Vision statement** (1 sentence, max 20 words)
 Definite optimism. A picture of the future, not a mission statement. The "boring everyday detail" from Q6 compressed.
@@ -133,6 +194,19 @@ Combines the four above with:
 - Why us (origin + contrarian thesis)
 - North star (the 5-year boring everyday detail)
 - The schlep we'll undertake (Q7)
+
+**6. What I noticed about how you think** (short, honest, second-person)
+A vision tells you about the idea. This tells the founder something about *themselves* — and it's often the part they remember. PG reads founders, not just ideas. As you ran the interview, you were watching for signals; now reflect them back plainly.
+
+Watch for these during Phase 1 (note which appeared):
+- Named a **real person** with a real problem, unprompted — not a category.
+- **Pushed back** when you challenged a premise, with a reason — conviction, not compliance.
+- Showed **lived edge** — knows this space from the inside, saw the gap before others.
+- Showed **taste** — cared about getting a specific detail right.
+- Showed **agency** — already building or already talking to users, not just planning.
+- Overcame **schlep blindness** — willing to do the unsexy manual work.
+
+Write 3-5 sentences, addressed to the founder. Name the signals you actually saw, quoting them back where you can ("when you said *X*, that told me..."). Be equally honest about what was missing — if every user stayed a category and no premise got defended, say that, because it's the most useful thing they'll read. This is not flattery and not a scorecard; it's one sharp observation about how this person thinks, the kind a good mentor offers at the end of a hard conversation. Skip it only if the session was a pure standalone Mode C with no interview to draw from.
 
 **Output:** Save as `vision-draft.md` in the location the user specifies (project dir, `tmp/`, or inline).
 

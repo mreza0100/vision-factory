@@ -1,6 +1,6 @@
 # Vision Factory
 
-**Version:** 2.0.0 · **License:** MIT
+**Version:** 2.1.0 · **License:** MIT
 
 A skill that forges, validates, and stress-tests a startup vision using Paul Graham's actual filters — not generic VC frameworks.
 
@@ -21,6 +21,14 @@ v2 is grounded in PG end-to-end:
 - Reference docs are distilled from PG's essays into `references/pg-*.md`
 - The multi-profile / consumer-integration scaffolding from v1 is gone — this is one opinionated thing, not a pluggable framework
 
+## What changed in v2.1
+
+Mode A's grilling got sharper, borrowing three mechanics from the YC office-hours diagnostic:
+
+- **Anti-sycophancy guardrails** — an explicit list of soft hedge-phrases to avoid, plus worked soft-vs-forcing examples so the interview pushes instead of validates.
+- **Stage-aware routing + an escape hatch** — the eight questions now route by founder stage (pre-product → has paying customers) instead of always asking all eight, and there's a graceful path when the founder says "just do it."
+- **"What I noticed about how you think"** — a sixth Mode A artifact that reflects founder signals (named real users, defended premises, lived edge, taste, agency) back to the founder, the way a good mentor closes a hard conversation.
+
 ## How it works
 
 Three modes that chain (A → B → C → optional loop), each of which can also be invoked standalone.
@@ -37,7 +45,7 @@ Eight questions, asked one at a time, pushing back on vague answers. Not "what's
 
 Push-back rules enforce specificity: no nameless users, no jargon, no resume-as-credentials, no press-release 5-year pictures, no frictionless-growth fantasies.
 
-Output: vision statement (≤20 words), origin story, problem→solution narrative, contrarian thesis, and a one-page summary.
+Output: vision statement (≤20 words), origin story, problem→solution narrative, contrarian thesis, a one-page summary, and a short "what I noticed about how you think" reflection.
 
 ### Mode B: RESEARCH — The Cross-Check
 
