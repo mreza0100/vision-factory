@@ -1,6 +1,6 @@
 # Vision Factory
 
-**Version:** 2.1.0 · **License:** MIT
+**Version:** 2.2.0 · **License:** MIT
 
 A skill that forges, validates, and stress-tests a startup vision using Paul Graham's actual filters — not generic VC frameworks.
 
@@ -29,15 +29,26 @@ Mode A's grilling got sharper, borrowing three mechanics from the YC office-hour
 - **Stage-aware routing + an escape hatch** — the eight questions now route by founder stage (pre-product → has paying customers) instead of always asking all eight, and there's a graceful path when the founder says "just do it."
 - **"What I noticed about how you think"** — a sixth Mode A artifact that reflects founder signals (named real users, defended premises, lived edge, taste, agency) back to the founder, the way a good mentor closes a hard conversation.
 
+## What changed in v2.2
+
+The chain no longer abandons the founder at the cliff edge of "go talk to customers." A fourth mode closes the loop, plus two evidence-discipline upgrades:
+
+- **Mode D — FIELD-VALIDATE** — turns each unproven scorecard filter into the customer-interview kit that would flip it (research plan + behavior-based screener + Mom-Test interview guide), then synthesizes returned transcripts into a re-score. The bridge between STRESS-TEST and "go build."
+- **Outcome-verb + decision-mapping in Mode B** — every testable claim becomes a finite, falsifiable question that names the decision it informs; sideshow claims get cut.
+- **≥2-source groundedness in Mode C** — a CONDITIONAL flips to PASS only on two independent real sources, never one vivid quote. One source is a story; two is a pattern.
+
+The interview craft is borrowed from established discovery methodology but kept PG-native — no persona taxonomies, JTBD frameworks, or prioritization matrices.
+
 ## How it works
 
-Three modes that chain (A → B → C → optional loop), each of which can also be invoked standalone.
+Four modes that chain (A → B → C → D → optional loop), each of which can also be invoked standalone.
 
 | Mode | Input | Output |
 |------|-------|--------|
 | **A — CREATE** | Founder context | Vision narrative + one-pager (PG-style) |
 | **B — RESEARCH** | Vision draft + available knowledge | Validation report with executed research |
 | **C — STRESS-TEST** | Vision draft + research (optional) | 10-filter PG rubric + hardened vision |
+| **D — FIELD-VALIDATE** | Scorecard CONDITIONALs + returned transcripts | Interview kit + synthesized re-score |
 
 ### Mode A: CREATE — The Grilling
 
@@ -59,6 +70,10 @@ Filters 1-3 are load-bearing — a FAIL on any of them means the vision doesn't 
 
 Verdict: GREEN (8+ PASS, 0 FAIL on load-bearing) → go build · YELLOW (5-7 PASS) → sharpen and revise · RED (<5 PASS or load-bearing FAIL) → rethink.
 
+### Mode D: FIELD-VALIDATE — Close the Loop
+
+Turns the scorecard's unproven filters into a real customer-interview kit, then folds the results back into a re-score. For each CONDITIONAL/FAIL filter it writes the past-behavior questions that would move it, produces a research plan + behavior-based screener + Mom-Test interview guide, and — after the founder runs the interviews — synthesizes the transcripts and re-scores (a CONDITIONAL flips to PASS only on ≥2 independent real sources). The founder runs the interviews; synthetic participants are never a substitute for real ones.
+
 ## Directory structure
 
 ```
@@ -75,8 +90,7 @@ vision-factory/
     ├── pg-on-survival.md                 # Can this vision survive contact with reality
     ├── pg-voice.md                       # How to write the output
     ├── pg-filters.md                     # Consolidated 10-filter rubric for Mode C
-    ├── interview-frameworks.md           # DEPRECATED (redirects to pg-*.md)
-    └── rubric-methodology.md             # DEPRECATED (redirects to pg-filters.md)
+    └── field-validate.md                 # Mode D: CONDITIONAL→questions, interview craft, re-score
 ```
 
 ## Frameworks referenced

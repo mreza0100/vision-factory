@@ -1,8 +1,8 @@
 ---
 name: vision-factory
-version: "2.1.0"
+version: "2.2.0"
 repo: "https://github.com/mreza0100/vision-factory"
-description: "Forge, validate, and stress-test a startup vision using Paul Graham's filters. Three modes: CREATE (PG-style Socratic grilling → vision narrative), RESEARCH (extract testable claims → execute research → validation report), STRESS-TEST (10-filter PG rubric → hardened vision). Load whenever the user says 'vision', 'vision-factory', wants to write/build/create a vision, validate a vision, stress-test or pressure-test a vision, or asks for a one-pager / north star / founding narrative for a startup."
+description: "Forge, validate, stress-test, and field-validate a startup vision using Paul Graham's filters. Four modes: CREATE (PG-style Socratic grilling → vision narrative), RESEARCH (extract testable claims → execute research → validation report), STRESS-TEST (10-filter PG rubric → hardened vision), FIELD-VALIDATE (turn scorecard CONDITIONALs into a customer-interview kit → synthesized re-score). Load whenever the user says 'vision', 'vision-factory', wants to write/build/create a vision, validate a vision, stress-test or pressure-test a vision, plan customer interviews for a vision, or asks for a one-pager / north star / founding narrative for a startup."
 ---
 
 # Vision Factory
@@ -25,6 +25,7 @@ Load when the user's message includes:
 - "validate my vision" / "research my vision" / "cross-check my vision"
 - "vision for \<product/company\>" / "north star for X" / "one-pager for X"
 - "founding narrative" / "origin story" / "why now for X"
+- "field-validate" / "plan customer interviews for my vision" / "turn my scorecard into interview questions"
 
 Do NOT load for:
 
@@ -43,6 +44,8 @@ CREATE → vision-draft.md (PG-style narrative + one-pager)
 RESEARCH → vision-research.md (claims extracted, researched, validation report)
    ↓
 STRESS-TEST → vision-scorecard.md (PG's 10-filter rubric + hardened vision)
+   ↓
+FIELD-VALIDATE → vision-fieldwork.md (scorecard CONDITIONALs → interview kit → synthesized re-score)
    ↓
 Optional: loop back to CREATE with findings
 ```
@@ -230,6 +233,8 @@ You have a vision draft. Before stress-testing it, extract every claim that coul
    - Timing claims ("this wasn't possible until Z changed")
    - Contrarian-thesis claims ("incumbents can't do this because...")
 
+   Frame each as a falsifiable question with an **outcome verb** (identify / describe / evaluate / compare / characterize — never "understand" or "explore"), and **decision-map** it: name the vision decision its answer would change. A claim that informs no decision is a sideshow — cut it.
+
 3. **Cross-check against what's already known.** Read any domain-specific knowledge bases or reference docs available in the project. Mark each claim:
    - **SUPPORTED** — evidence exists in available knowledge
    - **UNSUPPORTED** — no evidence found, needs research
@@ -321,6 +326,7 @@ The biggest risk in rubric scoring is grade inflation. Founders want good news. 
 - **Never let narrative quality affect scores.** A beautifully written vision with no named user still FAILs filter 2.
 - **Always state the evidence.** Every score cites the specific quote, fact, or absence-of-evidence it's based on. Quote the founder back to themselves.
 - **FAIL is not fatal.** It means "rethink this filter before proceeding." Many great companies scored FAIL on early visions and iterated.
+- **Flip on evidence, not anecdote.** A CONDITIONAL moves to PASS only on **≥2 independent real sources** (named users, observed behavior, money already flowing) — never one vivid quote. One source is a story; two is a pattern.
 
 PG's voice when delivering hard truths is direct but not harsh. Read `references/pg-voice.md` for tone calibration.
 
@@ -364,6 +370,24 @@ Save as `vision-scorecard.md` (includes both the per-filter rubric and the harde
 
 ---
 
+## Mode D: FIELD-VALIDATE — Close the Loop
+
+**Read `references/field-validate.md` before running.** It carries the CONDITIONAL→question mapping, the interview-craft pack, and the synthesis-to-re-score method.
+
+### Purpose
+
+The scorecard names what's unproven; this mode goes and proves it. It turns each CONDITIONAL or FAIL filter into the field instrument that would flip it, then folds returned evidence back into a re-score. This is the bridge between STRESS-TEST and "go build" — without it, the founder is told to "talk to customers" with no instrument.
+
+### Process
+
+1. **Map gaps to questions.** For each CONDITIONAL/FAIL filter, write the specific past-behavior questions whose answers would move it — e.g. WELL → "tell me about the last time you hit this; what did it cost?"
+2. **Produce the field kit** — a research plan, a 2–4-question behavior-based screener (screen-outs first, one articulacy check), and an interview guide. Mom Test throughout: ask about specific past events, never hypotheticals. The founder runs the interviews — discovery is not outsourced to a synthetic/AI participant.
+3. **Synthesize the return.** When transcripts come back, extract findings (≥2 independent sources each) and re-score the affected filters under Mode C's anti-inflation rules.
+
+**Output:** Save as `vision-fieldwork.md` — the field kit, with synthesized findings + re-score appended after interviews.
+
+---
+
 ## Artifact summary
 
 | Mode | Input | Output | File |
@@ -371,6 +395,7 @@ Save as `vision-scorecard.md` (includes both the per-filter rubric and the harde
 | A: CREATE | Founder context | Vision narrative + one-pager | `vision-draft.md` |
 | B: RESEARCH | Vision draft + available knowledge | Validation report from executed research | `vision-research.md` |
 | C: STRESS-TEST | Vision draft + research (optional) | Scored rubric + hardened vision | `vision-scorecard.md` |
+| D: FIELD-VALIDATE | Scorecard CONDITIONALs + returned transcripts | Interview kit + synthesized re-score | `vision-fieldwork.md` |
 
 ---
 
