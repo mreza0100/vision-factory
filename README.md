@@ -1,6 +1,6 @@
 # Vision Factory
 
-**Version:** 2.2.0 · **License:** MIT
+**Version:** 2.2.1 · **License:** MIT
 
 A skill that forges, validates, and stress-tests a startup vision using Paul Graham's actual filters — not generic VC frameworks.
 
